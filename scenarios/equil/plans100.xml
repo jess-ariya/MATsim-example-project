@@ -1,5 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE plans SYSTEM "http://www.matsim.org/files/dtd/plans_v4.dtd">
+<!--Note: links don't hv to be here-->
 <plans xml:lang="de-CH">
 <person id="1">
 	<plan>
