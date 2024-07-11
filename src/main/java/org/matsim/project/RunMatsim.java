@@ -21,6 +21,7 @@ package org.matsim.project;
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
+import org.matsim.core.config.groups.QSimConfigGroup;
 import org.matsim.core.controler.Controler;
 import org.matsim.core.controler.OutputDirectoryHierarchy.OverwriteFileSetting;
 import org.matsim.core.scenario.ScenarioUtils;
@@ -55,6 +56,12 @@ public class RunMatsim{
 		Controler controler = new Controler( scenario ) ;
 		
 		// possibly modify controler here
+
+		// can add a visualiser
+		// config.controler().setLastIteration(0);
+//		config.qsim().setTrafficDynamics(QSimConfigGroup.TrafficDynamics.kinematicWaves); //enum
+//		config.qsim().setSnapshotStyle(QSimConfigGroup.SnapshotStyle.kinematicWaves);
+
 
 //		controler.addOverridingModule( new OTFVisLiveModule() ) ;
 
