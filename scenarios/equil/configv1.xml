@@ -4,63 +4,153 @@
 
     <module name="global">
         <param name="randomSeed" value="4711" />
-        <param name="coordinateSystem" value="Atlantis" />
+        <param name="coordinateSystem" value="EPSG:26910" /> <!-- Change the EPSG-->
+<!--        <param name= " numberOfThreads " value= "1" /> &lt;!&ndash;starting pt: #available cores&ndash;&gt;-->
     </module>
 
     <module name="network">
-        <param name="inputNetworkFile" value="network.xml" />
+        <param name="inputChangeEventsFile" value="null" />
+        <param name="inputNetworkFile" value="new-west_v2.xml" />
+        <param name="laneDefinitionsFile" value="null" />
+        <param name="timeVariantNetwork" value="false" />
+
     </module>
 
     <module name="plans">
-        <param name="inputPlansFile" value="plans100.xml" />
+        <!-- String: minOfDurationAndEndTime tryEndTimeThenDuration endTimeOnly. Anything besides minOfDurationAndEndTime will internally use a different (simpler) version of the TimeAllocationMutator. -->
+        <param name="activityDurationInterpretation" value="tryEndTimeThenDuration" />
+        <!-- Possible values: reject,useMainModeIdentifier -->
+        <param name="handlingOfPlansWithoutRoutingMode" value="reject" />
+        <!-- The Coordinates Reference System in which the coordinates are expressed in the input file. At import, the coordinates will be converted to the coordinate system defined in "global", and willbe converted back at export. If not specified, no conversion happens. -->
+        <param name="inputCRS" value="null" />
+        <param name="inputPersonAttributesFile" value="null" />
+        <param name="inputPlansFile" value="plans500.xml" />
+        <param name="removingUnnecessaryPlanAttributes" value="true" /> <!-- was on example code (serengeti park); default is false; Caution!-->
+        <!-- Defines how departure times are interpreted in rerouting applications. If set to 'ignoreDelays', the departure time of a trip when routing along a plan will always be the nominal (plan-based) activity end time. If set to 'shiftActivityEndTimes', routing along a plan will accumulate travel times and shift activity end times if necessary -->
+        <param name="tripDurationHandling" value="ignoreDelays" />
+
     </module>
 
-    <module name="controler"> <!-- controls the simulation-->
+    <module name="vehicles" >
+        <param name="vehiclesFile" value="mode-vehicles.xml" />
+    </module>
+
+    <module name="controller"> <!-- controls the simulation-->
 <!--        <param name="outputDirectory" value="./output" />--> <!-- comment out output-->
         <param name="firstIteration" value="0" /> <!-- 0 is default-->
-        <param name="lastIteration" value="10" />
+        <param name="lastIteration" value="0" />
+        <param name="mobsim" value="qsim" /><!-- mobsim qsim -->
+        <param name= "routingAlgorithmType" value="SpeedyALT" />
+
     </module>
 
     <module name="qsim">
         <!-- "start/endTime" of MobSim (00:00:00 == take earliest activity time/ run as long as active vehicles exist) -->
         <param name="startTime" value="00:00:00" />
         <param name="endTime" value="00:00:00" />
-
         <param name = "snapshotperiod"	value = "00:00:00"/> <!-- 00:00:00 means NO snapshot writing -->
+
+        <!-- Added below -->
+        <param name="flowCapacityFactor" value="0.01"/>
+        <param name="storageCapacityFactor" value="0.01"/>
+
+        <param name="mainMode" value="car"/>
+        <param name= " vehiclesSource " value= "modeVehicleTypesFromVehiclesData" />  <!-- or value = defaultVehicle  -->
+        <param name= " vehicleBehavior " value= "teleport" />
+
+        <param name="usePersonIdForMissingVehicleId" value="true"/>
+        <param name= " trafficDynamics" value= " kinematicWaves" />
+
+        <!-- If false, the qsim accumulates fractional flows up to one flow unit in every time step.  If true, flows are updated only if an agent wants to enter the link or an agent is added to buffer. Default is true. -->
+        <param name="usingFastCapacityUpdate" value="true" />
+
+    </module>
+    
+    <module name="plansCalcRoute">
+        <!--  Defines how access and egress to main mode is simulated. Either of [none, accessEgressModeToLink, walkConstantTimeToLink, accessEgressModeToLinkPlusTimeConstant], Current default=none which means no access or egress trips are simulated.  -->
+        <param name="accessEgressType" value="accessEgressModeToLink"/>
+        <param name= " networkModes " value= "car"/>
+
     </module>
 
-    <module name="planCalcScore">
+
+<!--    <module name= "scoring" >-->
+<!--        <param name="learningRate" value="1.0" />-->
+<!--        <param name="BrainExpBeta" value="2.0" />-->
+
+<!--        <param name="lateArrival" value="-18" />-->
+<!--        <param name="earlyDeparture" value="-0" />-->
+<!--        <param name="performing" value="+6" />-->
+<!--        <param name="waiting" value="-0" />-->
+
+<!--        <parameterset type= " activityParams " >-->
+<!--            <param name= " activityType " value= "h" />-->
+<!--            <param name= " typicalDuration " value= " 12:00:00 " />-->
+<!--        </parameterset >-->
+<!--        <parameterset type= " activityParams " >-->
+<!--            <param name= " activityType " value= "w" />-->
+<!--            <param name= " typicalDuration " value= " 08:00:00 " />-->
+<!--        </parameterset >-->
+<!--    </module >-->
+
+    <module name="scoring">
         <param name="learningRate" value="1.0" />
-        <param name="BrainExpBeta" value="2.0" />
+        <param name="brainExpBeta" value="2.0" />
 
         <param name="lateArrival" value="-18" />
         <param name="earlyDeparture" value="-0" />
         <param name="performing" value="+6" />  <!-- values/hour -->
         <param name="waiting" value="-0" />
-        <parameterset type="activityParams" >
-            <param name="activityType"            value="h" /> <!-- home -->
-            <param name="priority"        value="1" />
-            <param name="typicalDuration" value="12:00:00" />
+
+        <parameterset type="scoringParameters" >
+
+            <parameterset type="activityParams" >
+                <param name="activityType"            value="h" /> <!-- home -->
+                <param name="priority"        value="1" />
+                <param name="typicalDuration" value="12:00:00" />
+                <param name="traveling" value="-6.0"/>
+                <param name="monetaryDistanceRate" value="-0.0001"/>
+
+            </parameterset>
+            <parameterset type="activityParams" >
+                <param name="activityType"            value="w" /> <!-- work -->
+                <param name="priority"        value="1" />
+                <param name="typicalDuration" value="08:00:00" />
+                <param name="openingTime"     value="07:00:00" />
+                <param name="latestStartTime" value="09:00:00" />
+                <param name="earliestEndTime" value="" />
+                <param name="closingTime"     value="18:00:00" />
+                <param name="traveling" value="-6.0"/>
+                <param name="monetaryDistanceRate" value="-0.0001"/>
+
+            </parameterset>
+
         </parameterset>
-        <parameterset type="activityParams" >
-            <param name="activityType"            value="w" /> <!-- work -->
-            <param name="priority"        value="1" />
-            <param name="typicalDuration" value="08:00:00" />
-            <param name="openingTime"     value="07:00:00" />
-            <param name="latestStartTime" value="09:00:00" />
-            <param name="earliestEndTime" value="" />
-            <param name="closingTime"     value="18:00:00" />
+
+        <parameterset type="modeParams" >
+            <param name="mode" value="car" />
+            <!-- [unit_of_money/m] conversion of distance into money. Normally negative. -->
+            <param name="monetaryDistanceRate" value="-0.0001" />
+            <!-- [utils/m] utility of traveling (e.g. walking or driving) per m, normally negative.  this is on top of the time (dis)utility. -->
+            <param name="marginalUtilityOfDistance_util_m" value="0.0" />
+            <!-- [utils/hr] additional marginal utility of traveling.  normally negative.  this comes on top of the opportunity cost of time -->
+            <param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
         </parameterset>
     </module>
 
     <module name="strategy">
         <param name="maxAgentPlanMemorySize" value="5" /> <!-- 0 means unlimited -->
 
+        <parameterset type= "strategy-settings">
         <param name="ModuleProbability_1" value="0.9" /> <!-- 90% of agents-->
         <param name="Module_1" value="BestScore" /> <!-- Selects between options w/ highest score-->
+        </parameterset >
 
+        <parameterset type= "strategy-settings">
         <param name="ModuleProbability_2" value="0.1" /> <!-- 10% of agents-->
         <param name="Module_2" value="ReRoute" /> <!--innovative module; tries/selects new options-->
+        </parameterset >
+
     </module>
 
 </config>
