@@ -38,12 +38,12 @@ public class CreatePopulation {
 
         Scenario scenario = ScenarioUtils.createScenario(config);
 
-        new MatsimNetworkReader(scenario.getNetwork()).readFile("scenarios/equil/vanc-merged1.xml"); //network file path. Must be in scenarios
+        new MatsimNetworkReader(scenario.getNetwork()).readFile("scenarios/equil/new-west_v2.xml"); //network file path. Must be in scenarios
 
         fillScenario(scenario); // generate the population & add it to the scenario
 
         // Write the population to the plans.xml file
-        new PopulationWriter(scenario.getPopulation()).write("scenarios/equil/plans500vanc.xml"); // in scenarios folder
+        new PopulationWriter(scenario.getPopulation()).write("scenarios/equil/plans500.xml"); // in scenarios folder
 
         Controler controler = new Controler(scenario);
         config.controller().setOutputDirectory("src/main/java/org/matsim/population/outputvanc"); // sets location of output directory
