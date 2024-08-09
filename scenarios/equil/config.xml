@@ -27,7 +27,7 @@
 		<param name="startTime" value="00:00:00" />
 		<param name="endTime" value="00:00:00" />
 	
-		<param name = "snapshotperiod"	value = "00:01:00"/> <!-- 00:00:00 means NO snapshot writing -->
+		<param name = "snapshotperiod"	value = "00:00:00"/> <!-- 00:00:00 means NO snapshot writing -->
 	</module>
 
 	<module name="scoring">
@@ -59,18 +59,18 @@
 <!--				<param name="constant" value="0.0" />-->
 <!--				<param name="dailyMonetaryConstant" value="0.0" />-->
 <!--				<param name="dailyUtilityConstant" value="0.0" />-->
-<!--				<param name="marginalUtilityOfDistance_util_m" value="0.0" />-->
-<!--				<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />-->
-<!--				<param name="monetaryDistanceRate" value="-0.0001" />-->
+				<param name="marginalUtilityOfDistance_util_m" value="0.0" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+				<param name="monetaryDistanceRate" value="-0.0001" />
 			</parameterset>
 			<parameterset type="modeParams">
 				<param name="mode" value="pt" />
 <!--				<param name="constant" value="0.0" />-->
 <!--				<param name="dailyMonetaryConstant" value="0.0" />-->
 <!--				<param name="dailyUtilityConstant" value="0.0" />-->
-<!--				<param name="marginalUtilityOfDistance_util_m" value="0.0" />-->
-<!--				<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />-->
-<!--				<param name="monetaryDistanceRate" value="-0.0001" />-->
+				<param name="marginalUtilityOfDistance_util_m" value="0.0" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+				<param name="monetaryDistanceRate" value="-0.0001" />
 			</parameterset>
 
 			<parameterset type="modeParams">
@@ -85,13 +85,17 @@
 		</parameterset>
 
 	</module>
-	
-<!--	<module name="replanning">-->
+
+	<module name="replanning">
+		<param name="planSelectorForRemoval" value="WorstPlanForRemovalSelectorWithConflicts"/>
+	</module>
+
+	<!--	<module name="replanning">-->
 <!--		<param name="maxAgentPlanMemorySize" value="5" /> &lt;!&ndash; 0 means unlimited &ndash;&gt;-->
-<!--		<param name="ModuleProbability_1" value="0.9" />-->
-<!--		<param name="Module_1" value="BestScore" />-->
-<!--		<param name="ModuleProbability_2" value="0.1" />-->
-<!--		<param name="Module_2" value="ReRoute" />-->
+<!--&lt;!&ndash;		<param name="ModuleProbability_1" value="0.9" />&ndash;&gt;-->
+<!--&lt;!&ndash;		<param name="Module_1" value="BestScore" />&ndash;&gt;-->
+<!--&lt;!&ndash;		<param name="ModuleProbability_2" value="0.1" />&ndash;&gt;-->
+<!--&lt;!&ndash;		<param name="Module_2" value="ReRoute" />&ndash;&gt;-->
 <!--	</module>-->
 
 </config>

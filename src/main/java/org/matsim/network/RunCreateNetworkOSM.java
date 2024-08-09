@@ -23,9 +23,9 @@ import java.util.Set;
 public final class RunCreateNetworkOSM {
 
 //    private static String UTM7nAsEpsg = "EPSG:26910";
-    private static final String osmFile = "C:/Users/HW5P/Downloads/merged.osm.pbf";
+    private static final String osmFile = "C:/Users/HW5P/Downloads/vanc-merged.osm.pbf";
 //    private static final String osmFile = "C:/Users/HW5P/Downloads/british-columbia-latest.osm.pbf";
-    private static final String outputFile = "./src/main/java/org/matsim/network/new-west_v2.xml"; // network_new_west_osm.xml
+    private static final String outputFile = "./src/main/java/org/matsim/network/vanc-merged1.xml"; // network_new_west_osm.xml
 
 
     public static void main(String[] args) {

@@ -197,7 +197,7 @@
 		<param name="simStarttimeInterpretation" value="maxOfStarttimeAndEarliestActivityEnd" />
 		<!-- snapshotStyle. One of: equiDist queue withHoles withHolesAndShowHoles kinematicWaves  -->
 		<param name="snapshotStyle" value="queue" />
-		<param name="snapshotperiod" value="00:01:00" />
+		<param name="snapshotperiod" value="00:00:00" />
 		<param name="startTime" value="00:00:00" />
 		<param name="storageCapacityFactor" value="1.0" />
 		<!-- time in seconds.  Time after which the frontmost vehicle on a link is called `stuck' if it does not move. -->
@@ -228,7 +228,7 @@
 		<!-- maximum number of plans per agent.  ``0'' means ``infinity''.  Currently (2010), ``5'' is a good number -->
 		<param name="maxAgentPlanMemorySize" value="5" />
 		<!-- strategyName of PlanSelector for plans removal.  Possible defaults: WorstPlanSelector SelectRandom SelectExpBetaForRemoval ChangeExpBetaForRemoval PathSizeLogitSelectorForRemoval . The current default, WorstPlanSelector is not a good choice from a discrete choice theoretical perspective. Alternatives, however, have not been systematically tested. kai, feb'12 -->
-		<param name="planSelectorForRemoval" value="WorstPlanSelector" />
+		<param name="planSelectorForRemoval" value="WorstPlanForRemovalSelectorWithConflicts" />
 	</module>
 	<module name="replanningAnnealer" >
 		<!-- Activate the scaling of replanning modules using an annealing approach rather than fixed rates. -->
@@ -372,7 +372,7 @@
 				<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
 				<param name="mode" value="car" />
 				<!-- [unit_of_money/m] conversion of distance into money. Normally negative. -->
-				<param name="monetaryDistanceRate" value="0.0" />
+				<param name="monetaryDistanceRate" value="-1.0E-4" />
 			</parameterset>
 			<parameterset type="modeParams" >
 				<param name="constant" value="0.0" />
@@ -381,7 +381,7 @@
 				<param name="marginalUtilityOfDistance_util_m" value="0.0" />
 				<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
 				<param name="mode" value="pt" />
-				<param name="monetaryDistanceRate" value="0.0" />
+				<param name="monetaryDistanceRate" value="-1.0E-4" />
 			</parameterset>
 			<parameterset type="modeParams" >
 				<param name="constant" value="0.0" />

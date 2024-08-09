@@ -18,8 +18,11 @@
 	</module>
 	<module name="qsim" >
 		<param name="endTime" value="00:00:00" />
-		<param name="snapshotperiod" value="00:01:00" />
 		<param name="startTime" value="00:00:00" />
+	</module>
+	<module name="replanning" >
+		<!-- strategyName of PlanSelector for plans removal.  Possible defaults: WorstPlanSelector SelectRandom SelectExpBetaForRemoval ChangeExpBetaForRemoval PathSizeLogitSelectorForRemoval . The current default, WorstPlanSelector is not a good choice from a discrete choice theoretical perspective. Alternatives, however, have not been systematically tested. kai, feb'12 -->
+		<param name="planSelectorForRemoval" value="WorstPlanForRemovalSelectorWithConflicts" />
 	</module>
 	<module name="routing" >
 		<parameterset type="teleportedModeParameters" >
@@ -66,9 +69,12 @@
 			</parameterset>
 			<parameterset type="modeParams" >
 				<param name="mode" value="car" />
+				<!-- [unit_of_money/m] conversion of distance into money. Normally negative. -->
+				<param name="monetaryDistanceRate" value="-1.0E-4" />
 			</parameterset>
 			<parameterset type="modeParams" >
 				<param name="mode" value="pt" />
+				<param name="monetaryDistanceRate" value="-1.0E-4" />
 			</parameterset>
 			<parameterset type="modeParams" >
 				<param name="mode" value="walk" />

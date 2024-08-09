@@ -23,7 +23,7 @@ public class CreatePopulation {
     private static final Random random = new Random();
 
     public static void main(String[] args) {
-        Config config = ConfigUtils.createConfig();
+        Config config = ConfigUtils.createConfig(); // Creates 'Config' objecr
 
         config.controller().setLastIteration(0);
 
@@ -38,14 +38,15 @@ public class CreatePopulation {
 
         Scenario scenario = ScenarioUtils.createScenario(config);
 
-        new MatsimNetworkReader(scenario.getNetwork()).readFile("scenarios/equil/new-west_v2.xml");
+        new MatsimNetworkReader(scenario.getNetwork()).readFile("scenarios/equil/vanc-merged1.xml"); //network file path. Must be in scenarios
 
-        fillScenario(scenario);
+        fillScenario(scenario); // generate the population & add it to the scenario
 
         // Write the population to the plans.xml file
-        new PopulationWriter(scenario.getPopulation()).write("scenarios/equil/plans450.xml");
+        new PopulationWriter(scenario.getPopulation()).write("scenarios/equil/plans500vanc.xml"); // in scenarios folder
 
         Controler controler = new Controler(scenario);
+        config.controller().setOutputDirectory("src/main/java/org/matsim/population/outputvanc"); // sets location of output directory
         controler.getConfig().controller().setOverwriteFileSetting(OutputDirectoryHierarchy.OverwriteFileSetting.overwriteExistingFiles);
         controler.run();
 
@@ -68,7 +69,7 @@ public class CreatePopulation {
         // Collect all nodes from the network
         List<Node> nodes = new ArrayList<>(network.getNodes().values());
 
-        for (int i = 0; i< 450; i++){
+        for (int i = 0; i< 500; i++){
             //Randomly select nodes
             Node startNode = nodes.get(random.nextInt(nodes.size()));
             Node endNode = nodes.get(random.nextInt(nodes.size()));
