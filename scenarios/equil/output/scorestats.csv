@@ -1,2 +1,6 @@
 iteration;avg_executed;avg_worst;avg_average;avg_best
+<<<<<<< HEAD
 0;109.72991816158304;109.72991816158304;109.72991816158304;109.72991816158304
+=======
+0;111.21436903898133;111.21436903898133;111.21436903898133;111.21436903898133
+>>>>>>> 469e8bc (did trial & error on network and population generation.)

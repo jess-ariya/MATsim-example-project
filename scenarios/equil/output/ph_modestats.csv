@@ -1,2 +1,6 @@
 Iteration;car_travel;car_wait;stageActivity_travel;stageActivity_wait
+<<<<<<< HEAD
 0;216;0;0;0
+=======
+0;212;0;0;0
+>>>>>>> 469e8bc (did trial & error on network and population generation.)
