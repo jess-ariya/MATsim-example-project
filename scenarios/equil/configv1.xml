@@ -40,8 +40,14 @@
         <param name="firstIteration" value="0" /> <!-- 0 is default-->
         <param name="lastIteration" value="0" />
         <param name="mobsim" value="qsim" /><!-- mobsim qsim -->
-        <param name= "routingAlgorithmType" value="SpeedyALT" />
+        <param name= "routingAlgorithmType" value="Dijkstra" /> <!--value="SpeedyALT" -->
+        <param name="enableLinkToLinkRouting" value="true" />
 
+
+    </module>
+
+    <module name="transit" >
+        <param name="useTransit" value="false" />
     </module>
 
     <module name="qsim">

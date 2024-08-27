@@ -23,8 +23,8 @@ import java.util.Set;
 public final class RunCreateNetworkOSM {
 
 //    private static String UTM7nAsEpsg = "EPSG:26910";
-    private static final String osmFile = "C:/Users/HW5P/Downloads/merged.osm.pbf";
-    private static final String outputFile = "./src/main/java/org/matsim/network/new-west_v2.xml"; // network_new_west_osm.xml
+    private static final String osmFile = "C:/Users/HW5P/Downloads/nwe-west-homes.osm.pbf"; //merged.osm.pbf
+    private static final String outputFile = "./src/main/java/org/matsim/network/nwe-west-homes.xml"; // new-west_v2
 
 
     public static void main(String[] args) {
@@ -46,12 +46,6 @@ public final class RunCreateNetworkOSM {
                 .setCoordinateTransformation(ct)
                 .setAdjustCapacityLength(1.)
 
-
-//				.setIncludeLinkAtCoordWithHierarchy((coord, hierachyLevel) ->
-//						hierachyLevel <= 9 &&
-//								coord.getX() >= 537566 && coord.getX() <= 548009 &&
-//								coord.getY() >= 5841715 && coord.getY() <= 5848804
-//				)
                 .setAfterLinkCreated((link, map, direction) -> {
                     link.setAllowedModes(allowedModes);
 

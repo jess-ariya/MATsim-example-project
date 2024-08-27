@@ -6,14 +6,19 @@ import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.network.Network;
 import org.matsim.api.core.v01.network.Node;
 import org.matsim.api.core.v01.population.*;
+import org.matsim.core.api.experimental.events.EventsManager;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.config.groups.ScoringConfigGroup.ActivityParams;
 import org.matsim.core.controler.Controler;
 import org.matsim.core.controler.OutputDirectoryHierarchy;
+import org.matsim.core.events.EventsUtils;
 import org.matsim.core.network.io.MatsimNetworkReader;
 import org.matsim.core.scenario.ScenarioUtils;
+import org.matsim.core.utils.io.IOUtils;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -29,11 +34,9 @@ public class CreatePopulation {
         config.controller().setLastIteration(0);
 
         ActivityParams home = new ActivityParams("home");
-//        home.setTypicalDuration(16*60*60);
         home.setTypicalDuration(getRandomDuration(random, 14*60*60,18*60*60));
         config.scoring().addActivityParams(home);
         ActivityParams work = new ActivityParams("work");
-//        work.setTypicalDuration(8*60*60);
         work.setTypicalDuration(getRandomDuration(random, 6*60*60, 10*60*60));
         config.scoring().addActivityParams(work);
 
@@ -44,14 +47,26 @@ public class CreatePopulation {
         fillScenario(scenario);
 
         // Write the population to the plans.xml file
-        new PopulationWriter(scenario.getPopulation()).write("scenarios/equil/plans450.xml");
+        new PopulationWriter(scenario.getPopulation()).write("scenarios/equil/plans500v3.xml");
 
+        // Initialize the controller
         Controler controler = new Controler(scenario);
+
+        // Added this
+        // Initialize the EventsManager and SimpleEventsHandler
+        EventsManager eventsManager = EventsUtils.createEventsManager();
+        SimpleEventHandler simpleEventHandler = new SimpleEventHandler(scenario.getNetwork());
+        eventsManager.addHandler(simpleEventHandler);
 
         controler.getConfig().controller().setOverwriteFileSetting(OutputDirectoryHierarchy.OverwriteFileSetting.overwriteExistingFiles);
         controler.run();
 
+        // Added this
+        // After the simulation, you can retrieve and process the data from the CombinedEventHandler
+        int[] distanceDistribution = simpleEventHandler.getDistanceDistribution();
+        writeDistancesToFile(distanceDistribution, "output/distanceDistribution.txt");
     }
+
 
     private static int getRandomDuration(Random random, int minDuration, int maxDuration){
         return minDuration + random.nextInt(maxDuration-minDuration);
@@ -71,13 +86,11 @@ public class CreatePopulation {
         List<Node> nodes = new ArrayList<>(network.getNodes().values());
 
 
-        for (int i = 0; i< 450; i++){
+        for (int i = 0; i< 500; i++){
             //Randomly select nodes
             Node startNode = nodes.get(random.nextInt(nodes.size()));
             Node endNode = nodes.get(random.nextInt(nodes.size()));
 
-//            Coord coord = new Coord((double)(503758 + i * 10), (double) (5452160 + i*10));
-//            Coord coordWork = new Coord((double)(502213 - i * 10), (double) (5452944 - i*10));
             Coord coord = startNode.getCoord();
             Coord coordWork = endNode.getCoord();
             createOnePerson(scenario, population, i, coord, coordWork);
@@ -118,5 +131,20 @@ public class CreatePopulation {
         person.addPlan(plan);
         population.addPerson(person);
 
+    }
+
+    private static void writeDistancesToFile(int[] distanceDistribution, String fileName) {
+        BufferedWriter bw = IOUtils.getBufferedWriter(fileName);
+        try {
+            bw.write("Distance\tRides");
+            for (int i = 0; i < distanceDistribution.length; i++) {
+                bw.newLine();
+                bw.write(i + "\t" + distanceDistribution[i]);
+            }
+            bw.flush();
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

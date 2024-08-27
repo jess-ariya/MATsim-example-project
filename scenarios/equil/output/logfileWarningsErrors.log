@@ -1,32 +1,15 @@
-<<<<<<< HEAD
-2024-08-02T10:45:56,457  WARN PrepareForSimImpl:268 'usePersonIdForMissingVehicleId' is deprecated. It will be removed soon.
-2024-08-02T10:45:57,337  WARN RandomizingTimeDistanceTravelDisutilityFactory:118 There will be no routing randomness. The randomization of the travel disutility requires the travel time cost rate to be different than zero. Continuing anyway.
-2024-08-02T10:46:00,256  WARN QueueWithBuffer:500 Link 1018976280001f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.0764648618405626 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-08-02T10:46:00,272  WARN QueueWithBuffer:500 Link 10796566480001f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.152 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-08-02T10:46:00,274  WARN QueueWithBuffer:500 Link 10796566480001r too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.152 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-08-02T10:46:00,292  WARN QueueWithBuffer:500 Link 12460716710001f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.152 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-08-02T10:46:00,292  WARN QueueWithBuffer:500 Link 12460716710001r too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.152 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-08-02T10:46:00,296  WARN QueueWithBuffer:500 Link 1262895110001f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.1178481351289669 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-08-02T10:46:00,297  WARN QueueWithBuffer:500 Link 1262895110002f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.0743227619812203 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-08-02T10:46:00,297  WARN QueueWithBuffer:500 Link 1262895130001f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.1113297729973657 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-08-02T10:46:00,297  WARN QueueWithBuffer:500 Link 1262895150001f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.1259544144996523 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-08-02T10:46:00,298  WARN QueueWithBuffer:500 Link 12673061070003f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.152 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-08-02T10:46:00,298  WARN QueueWithBuffer:500 Link 12673061070003r too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.152 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-08-02T10:46:00,298  WARN QueueWithBuffer:503 Additional warnings of this type are suppressed.
-=======
-2024-07-31T13:45:40,644  WARN PrepareForSimImpl:268 'usePersonIdForMissingVehicleId' is deprecated. It will be removed soon.
-2024-07-31T13:45:41,242  WARN RandomizingTimeDistanceTravelDisutilityFactory:113 There will be no routing randomness. The randomization of the travel disutility requires the monetary distance rate to be different than zero. Continuing anyway.
-2024-07-31T13:45:41,242  WARN RandomizingTimeDistanceTravelDisutilityFactory:118 There will be no routing randomness. The randomization of the travel disutility requires the travel time cost rate to be different than zero. Continuing anyway.
-2024-07-31T13:45:43,201  WARN QueueWithBuffer:500 Link 1018976280001f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.0764648618405626 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-07-31T13:45:43,208  WARN QueueWithBuffer:500 Link 10796566480001f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.152 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-07-31T13:45:43,208  WARN QueueWithBuffer:500 Link 10796566480001r too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.152 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-07-31T13:45:43,230  WARN QueueWithBuffer:500 Link 12460716710001f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.152 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-07-31T13:45:43,230  WARN QueueWithBuffer:500 Link 12460716710001r too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.152 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-07-31T13:45:43,232  WARN QueueWithBuffer:500 Link 1262895110001f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.1178481351289669 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-07-31T13:45:43,232  WARN QueueWithBuffer:500 Link 1262895110002f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.0743227619812203 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-07-31T13:45:43,232  WARN QueueWithBuffer:500 Link 1262895130001f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.1113297729973657 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-07-31T13:45:43,232  WARN QueueWithBuffer:500 Link 1262895150001f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.1259544144996523 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-07-31T13:45:43,233  WARN QueueWithBuffer:500 Link 12673061070003f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.152 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-07-31T13:45:43,233  WARN QueueWithBuffer:500 Link 12673061070003r too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.152 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2024-07-31T13:45:43,233  WARN QueueWithBuffer:503 Additional warnings of this type are suppressed.
->>>>>>> 469e8bc (did trial & error on network and population generation.)
+2024-08-13T16:07:33,200  WARN ConfigConsistencyCheckerImpl:139 Config enables link travel time calculation and link to link travel time calculation. This requires at least twice as much memory as if only one method is used, however it might be necessary to enable a certain module configuration.
+2024-08-13T16:07:33,225  WARN PrepareForSimImpl:268 'usePersonIdForMissingVehicleId' is deprecated. It will be removed soon.
+2024-08-13T16:07:33,715  WARN RandomizingTimeDistanceTravelDisutilityFactory:118 There will be no routing randomness. The randomization of the travel disutility requires the travel time cost rate to be different than zero. Continuing anyway.
+2024-08-13T16:07:35,606  WARN QueueWithBuffer:500 Link 1018976280001f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.0764648618405626 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2024-08-13T16:07:35,615  WARN QueueWithBuffer:500 Link 10796566480001f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.152 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2024-08-13T16:07:35,615  WARN QueueWithBuffer:500 Link 10796566480001r too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.152 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2024-08-13T16:07:35,627  WARN QueueWithBuffer:500 Link 12460716710001f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.152 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2024-08-13T16:07:35,628  WARN QueueWithBuffer:500 Link 12460716710001r too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.152 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2024-08-13T16:07:35,630  WARN QueueWithBuffer:500 Link 1262895110001f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.1178481351289669 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2024-08-13T16:07:35,630  WARN QueueWithBuffer:500 Link 1262895110002f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.0743227619812203 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2024-08-13T16:07:35,630  WARN QueueWithBuffer:500 Link 1262895130001f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.1113297729973657 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2024-08-13T16:07:35,630  WARN QueueWithBuffer:500 Link 1262895150001f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.1259544144996523 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2024-08-13T16:07:35,630  WARN QueueWithBuffer:500 Link 12673061070003f too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.152 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2024-08-13T16:07:35,630  WARN QueueWithBuffer:500 Link 12673061070003r too small: enlarge storage capacity from: 1.0666666666666667 Vehicles to: 1.152 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2024-08-13T16:07:35,630  WARN QueueWithBuffer:503 Additional warnings of this type are suppressed.

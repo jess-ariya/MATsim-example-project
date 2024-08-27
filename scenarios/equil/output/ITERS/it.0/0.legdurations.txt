@@ -1,12 +1,5 @@
 pattern	0+	5+	10+	15+	20+	25+	30+	35+	40+	45+	50+	55+	60+
-<<<<<<< HEAD
-home---work	34	86	128	103	77	18	4	0	0	0	0	0	0
-work---home	40	87	117	106	77	17	6	0	0	0	0	0	0
+home---work	31	101	141	123	82	20	1	1	0	0	0	0	0
+work---home	34	105	125	134	84	14	4	0	0	0	0	0	0
 
-average leg duration: 862.9844444444444 seconds = 00:14:22
-=======
-home---work	34	87	127	105	83	13	1	0	0	0	0	0	0
-work---home	40	87	117	113	77	13	3	0	0	0	0	0	0
-
-average leg duration: 849.6844444444445 seconds = 00:14:09
->>>>>>> 469e8bc (did trial & error on network and population generation.)
+average leg duration: 866.928 seconds = 00:14:26

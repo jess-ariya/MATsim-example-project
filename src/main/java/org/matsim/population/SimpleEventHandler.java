@@ -1,4 +1,4 @@
-package org.matsim.analyze;
+package org.matsim.population;
 
 import org.matsim.api.core.v01.Id;
 
@@ -13,27 +13,28 @@ import org.matsim.api.core.v01.events.PersonArrivalEvent;
 import org.matsim.api.core.v01.events.PersonDepartureEvent;
 import org.matsim.api.core.v01.events.handler.PersonArrivalEventHandler;
 import org.matsim.api.core.v01.events.handler.PersonDepartureEventHandler;
+import org.matsim.api.core.v01.network.Network;
 import org.matsim.api.core.v01.population.Person;
+import org.matsim.vehicles.Vehicle;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
-* Needs to be developed and tested!
+ * Needs to be developed and tested!
  * */
-
 public class SimpleEventHandler implements PersonDepartureEventHandler, PersonArrivalEventHandler, PersonEntersVehicleEventHandler,
         PersonLeavesVehicleEventHandler, LinkEnterEventHandler{
 
     private final Map<Id<Person>, Double> departureTimeByPerson = new HashMap<>();
     // Added below:
     private final Map<Id<Person>, Double> travelledDistance = new HashMap<>();
-    private final Map<Id<Vehicle>, Id<Person>> vehicle2Persons = new HashMap<>();
+    private final Map<Id<Vehicle>, Id<Person>> vehicle2Persons = new HashMap<Id<org.matsim.vehicles.Vehicle>, Id<Person>>();
     private final Network network;
 
     private int[] distanceDistribution = new int[30];
 
-    public SimpleEventHandler(Network network){
+    public SimpleEventHandler(Network network) {
         this.network = network;
     }
 
@@ -73,7 +74,7 @@ public class SimpleEventHandler implements PersonDepartureEventHandler, PersonAr
     }
 
     public void handleEvent(LinkEnterEvent event){
-        if (this.vehicle2Persons.containskey(event.getVehicleId())){
+        if (this.vehicle2Persons.containsKey(event.getVehicleId())){
             Id<Person> personId = this.vehicle2Persons.get(event.getVehicleId());
             double distanceSoFarTravelled = this.travelledDistance.get(personId);
             double length = this.network.getLinks().get(event.getLinkId()).getLength();
